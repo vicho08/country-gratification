@@ -28,7 +28,7 @@ class Gratification
 
   def validate_strategy
     s = strategy
-    return if s.valid?
+    return if s.nil? || s.valid?
 
     s.errors.each do |error|
       errors.add(error.attribute, error.message)
