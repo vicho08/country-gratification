@@ -1,0 +1,37 @@
+<h1>Calcular Gratificación</h1>
+<%= form_with model: @gratification, url: gratifications_path, local: true do |f| %>
+  <div>
+    <%= f.label :country, "País" %>
+    <%= f.select :country,
+                 Country.all,
+                 { prompt: "Selecciona un país" },
+                 onchange: "this.form.submit()" %>
+  </div>
+
+
+  <% if @gratification.present? %>
+    <% @gratification.fields.each do |field, label| %>
+      <div>
+        <%= f.label field, label %>
+        <%= f.number_field field, min: 0 %>
+      </div>
+    <% end %>
+  <%end %>
+  <br>
+  <%= f.submit "Calcular" %>
+<% end %>
+<br>
+<% unless @result.nil? %>
+  <h2>Gratificación: <%= number_to_currency(@result) %></h2>
+<% end %>
+
+<% if @submitted && @gratification.errors.any? %>
+  <div class="errors" style="color: red;">
+    <h4>Corrige los siguientes errores:</h4>
+    <ul>
+      <% @gratification.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

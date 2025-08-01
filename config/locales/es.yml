@@ -1,0 +1,40 @@
+es:
+  activemodel:
+    attributes:
+      gratification:
+        country: "País"
+        monthly_base_salary: "Sueldo base mensual"
+        minimum_monthly_income: "Ingreso mínimo mensual"
+        daily_salary: "Salario diario"
+        days_worked_year: "Días trabajados en el año"
+        monthly_salary: "Salario mensual"
+        worked_days_in_semester: "Días trabajados en el semestre"
+    errors:
+      models:
+        gratifications/chile_gratification:
+          attributes:
+            monthly_base_salary:
+              blank: "no puede estar en blanco"
+              not_a_number: "debe ser un número"
+              greater_than: "debe ser mayor a %{count}"
+            minimum_monthly_income:
+              blank: "no puede estar en blanco"
+              not_a_number: "debe ser un número"
+              greater_than: "debe ser mayor a %{count}"
+        gratifications/mexico_gratification:
+          attributes:
+            daily_salary:
+              blank: "no puede estar en blanco"
+              not_a_number: "debe ser un número"
+              greater_than: "debe ser mayor a %{count}"
+            days_worked_year:
+              blank: "no puede estar en blanco"
+              not_a_number: "debe ser un número"
+              greater_than: "debe ser mayor a %{count}"
+              less_than_or_equal_to: "debe ser menor o igual a %{count}"
+  errors:
+    messages:
+      blank: "no puede estar en blanco"
+      not_a_number: "debe ser un número"
+      greater_than: "debe ser mayor a %{count}"
+      less_than_or_equal_to: "debe ser menor o igual a %{count}"
